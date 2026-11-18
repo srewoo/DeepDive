@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>New Tab</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=stylesheet href=newtab.css>
+</head>
+<body>
+<img id=bg alt="" decoding=async>
+<iframe id=live title="Deep Dive, live" tabindex=-1 aria-hidden=true hidden></iframe>
+<main>
+  <p id=clock></p>
+  <p id=date></p>
+  <section id=today hidden><span>Today’s dive</span><b id=tn></b><span id=ts></span></section>
+  <p id=hello>A whole underwater world, one click away.</p>
+  <a id=dive href=index.html>Dive in</a>
+</main>
+<footer>
+  <form id=search role=search hidden>
+    <svg viewBox="0 0 24 24" aria-hidden=true><circle cx=10.5 cy=10.5 r=6.5 /><path d="M15.5 15.5 21 21" /></svg>
+    <input id=q type=search name=q maxlength=2048 autocomplete=off spellcheck=false placeholder="Search the web" aria-label="Search the web">
+  </form>
+  <div id=side><span id=cap></span><label id=lv><input type=checkbox id=lvc> Live scene</label></div>
+</footer>
+<script src=posters.js></script>
+<script src=daily.js></script>
+<script src=newtab.js></script>
+</body>
+</html>

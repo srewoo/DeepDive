@@ -1,0 +1,52 @@
+:root { color-scheme: dark; }
+html, body { height: 100%; margin: 0; }
+body {
+  position: relative; overflow: hidden; background: #03131c;
+  font: 600 16px/1.4 system-ui, -apple-system, sans-serif; color: #e8fbff;
+}
+#bg, #live { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+#bg { object-fit: cover; animation: drift 60s ease-in-out infinite alternate; }
+@keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.1) translate(-1%, 1%); } }
+@media (prefers-reduced-motion: reduce) { #bg { animation: none; } }
+#live { opacity: 0; pointer-events: none; transition: opacity 1.6s; }
+.live #live { opacity: 1; }
+body::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, #03131cd0, #03131c40 55%, #03131c00), linear-gradient(0deg, #03131c99, #03131c00 30%); }
+main, footer { position: absolute; z-index: 1; }
+main { left: clamp(1.5rem, 7vw, 7rem); top: 50%; transform: translateY(-50%); display: grid; justify-items: start; gap: .6rem; max-width: min(34rem, 86vw); }
+p { margin: 0; }
+#clock { font: 800 clamp(4rem, 11vw, 9rem)/1 system-ui, sans-serif; letter-spacing: -.02em; text-shadow: 0 .05em .3em #0008; font-variant-numeric: tabular-nums; }
+#date { font-size: clamp(1rem, 1.6vw, 1.35rem); color: #bfefff; text-shadow: 0 1px 6px #000a; margin-bottom: 1.2rem; }
+#today { display: grid; gap: .15rem; padding: .9rem 1.2rem; border-radius: .7rem; background: #03131cb3; box-shadow: inset 0 0 0 1px #7ff3ff55; backdrop-filter: blur(6px); }
+#today span:first-child { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: #7ff3ff; }
+#today b { font: 700 1.5rem/1.2 Georgia, serif; color: #fff; }
+#today #ts { font-size: .9rem; color: #bfefff; }
+#today.ok { box-shadow: inset 0 0 0 1px #9ff0b088; }
+#today.ok span:first-child { color: #9ff0b0; }
+#hello { font-size: 1.15rem; color: #cdeff5; text-shadow: 0 1px 6px #000c; }
+#dive {
+  margin-top: .8rem; padding: .85rem 1.8rem; border-radius: .5rem; background: linear-gradient(#9ff6ff, #19c3d6);
+  box-shadow: inset 0 -.2em #0003, 0 0 2em #19c3d680; color: #03222d; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; text-decoration: none; transition: transform .12s, filter .12s;
+}
+#dive:hover { transform: translateY(-2px); filter: brightness(1.1); }
+:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+footer { left: 0; right: 0; bottom: 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .8rem 1.5rem; padding: 1rem clamp(1rem, 3vw, 2rem) clamp(1rem, 3vh, 1.6rem); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: #e8fbffb3; text-shadow: 0 1px 4px #000; }
+#side { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
+.live #cap { visibility: hidden; }
+/* search: bottom left, sends the query to the browser's default search engine (chrome.search) */
+#search {
+  position: relative; display: flex; align-items: center; width: min(26rem, 100%); height: 2.9rem; border-radius: 1.45rem;
+  background: #03131c99; box-shadow: inset 0 0 0 1px #7ff3ff40; backdrop-filter: blur(8px); transition: background .15s, box-shadow .15s;
+}
+#search:focus-within { background: #03131cd9; box-shadow: inset 0 0 0 1px #7ff3ffa6, 0 0 1.6em #19c3d640; }
+#search svg { position: absolute; left: 1.05rem; width: 1.1rem; height: 1.1rem; fill: none; stroke: #7ff3ff; stroke-width: 2.2; stroke-linecap: round; pointer-events: none; }
+#q {
+  flex: 1; min-width: 0; height: 100%; padding: 0 1.2rem 0 2.85rem; border: 0; border-radius: inherit; background: none; outline: none;
+  font: 500 1rem system-ui, -apple-system, sans-serif; letter-spacing: normal; text-transform: none; color: #fff; text-shadow: none;
+}
+#q::placeholder { color: #bfefffa6; }
+#q::-webkit-search-cancel-button { filter: invert(1) opacity(.6); cursor: pointer; }
+#search:has(#q:focus-visible) { outline: 3px solid #fff; outline-offset: 3px; }
+#lv { display: flex; align-items: center; gap: .5rem; cursor: pointer; }
+#lv input { accent-color: #19c3d6; width: 1rem; height: 1rem; }
+[hidden] { display: none !important; }
